@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "260819850563",
+    "project_id": "echo-express-9b327",
+    "storage_bucket": "echo-express-9b327.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260819850563:android:db8daf833480361c994bf6",
+        "android_client_info": {
+          "package_name": "com.top.best.ecommerce.echoexpress"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsHlB8NxwwEaXO0z6L2IZmqX171xakgfU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
