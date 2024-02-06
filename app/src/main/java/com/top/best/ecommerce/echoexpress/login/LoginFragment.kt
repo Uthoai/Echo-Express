@@ -6,25 +6,42 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
+import com.top.best.ecommerce.echoexpress.base.BaseFragment
+import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.databinding.FragmentLoginBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
 
-class LoginFragment : Fragment() {
-    private lateinit var binding: FragmentLoginBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentLoginBinding.inflate(inflater,container,false)
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-        setListener()
+    val viewModel: LoginViewModel by viewModels()
 
-        return binding.root
+    override fun allObserver() {
+        loginObserver()
     }
 
-    private fun setListener() {
+    private fun loginObserver(){
+        viewModel._loginResponse.observe(viewLifecycleOwner){
+            when(it){
+                is DataState.Error -> {
+                    loading.dismiss()
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Loading -> {
+                    loading.show()
+                    //Toast.makeText(context, "loading...", Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Success -> {
+                    loading.dismiss()
+                    findNavController().navigate(R.id.action_loginFragment_to_customerDashboardFragment)
+                }
+            }
+        }
+    }
+
+    override fun setListener() {
         with(binding){
             btnLogin.setOnClickListener {
                 etEmail.isEmpty()
@@ -47,7 +64,11 @@ class LoginFragment : Fragment() {
         val password = binding.etPassword.text.toString()
         if (emailPattern.matches(email)){
             if (password.length>=8){
-                findNavController().navigate(R.id.action_loginFragment_to_customerDashboardFragment)
+                val user = LoginUser(
+                    email,
+                    password
+                )
+                viewModel.userLogin(user)
             }
             else{
                 Toast.makeText(context, "enter correct password", Toast.LENGTH_SHORT).show()

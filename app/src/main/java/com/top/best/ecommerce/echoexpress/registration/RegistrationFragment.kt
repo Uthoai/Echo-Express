@@ -10,35 +10,32 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
+import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.databinding.FragmentRegistrationBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
 
-class RegistrationFragment : Fragment() {
-    private lateinit var binding: FragmentRegistrationBinding
+class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentRegistrationBinding::inflate) {
+
     val viewModel: RegistrationViewModel by viewModels()
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentRegistrationBinding.inflate(inflater,container,false)
 
-        setListener()
+    override fun allObserver() {
         registrationObserver()
-
-        return binding.root
     }
 
     private fun registrationObserver() {
         viewModel._registrationResponse.observe(viewLifecycleOwner){
             when(it){
                 is DataState.Error -> {
+                    loading.dismiss()
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Loading -> {
+                    loading.show()
                     Toast.makeText(context, "loading...", Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Success -> {
+                    loading.dismiss()
                     //Toast.makeText(context, "create user: ${it.data}", Toast.LENGTH_SHORT).show()
                     findNavController().navigate(R.id.action_registrationFragment_to_customerDashboardFragment)
                 }
@@ -46,7 +43,7 @@ class RegistrationFragment : Fragment() {
         }
     }
 
-    private fun setListener() {
+    override fun setListener() {
         with(binding){
             btnRegister.setOnClickListener {
                 etFullName.isEmpty()

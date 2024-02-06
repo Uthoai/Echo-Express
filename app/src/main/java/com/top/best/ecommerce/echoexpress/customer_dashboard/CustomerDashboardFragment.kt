@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.top.best.ecommerce.echoexpress.R
+import com.top.best.ecommerce.echoexpress.base.BaseFragment
+import com.top.best.ecommerce.echoexpress.databinding.FragmentCustomerDashboardBinding
 
-class CustomerDashboardFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_customer_dashboard, container, false)
+class CustomerDashboardFragment : BaseFragment<FragmentCustomerDashboardBinding>
+    (FragmentCustomerDashboardBinding::inflate) {
+    override fun setListener() {
+
+    }
+
+    override fun allObserver() {
+
     }
 }

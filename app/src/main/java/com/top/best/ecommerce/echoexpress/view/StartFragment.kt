@@ -7,22 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
+import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.databinding.FragmentStartBinding
 
-class StartFragment : Fragment() {
-    private lateinit var binding: FragmentStartBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentStartBinding.inflate(inflater,container,false)
+class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
 
-        setListener()
-
-        return binding.root
-    }
-
-    private fun setListener() {
+    override fun setListener() {
         with(binding){
             btnLogin.setOnClickListener {
                 findNavController().navigate(R.id.action_startFragment_to_loginFragment)
@@ -31,5 +21,9 @@ class StartFragment : Fragment() {
                 findNavController().navigate(R.id.action_startFragment_to_registrationFragment)
             }
         }
+    }
+
+    override fun allObserver() {
+
     }
 }
