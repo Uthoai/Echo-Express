@@ -14,7 +14,9 @@ import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.databinding.FragmentRegistrationBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentRegistrationBinding::inflate) {
 
     val viewModel: RegistrationViewModel by viewModels()

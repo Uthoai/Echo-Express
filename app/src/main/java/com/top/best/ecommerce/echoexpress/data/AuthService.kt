@@ -5,19 +5,18 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.top.best.ecommerce.echoexpress.login.LoginUser
 import com.top.best.ecommerce.echoexpress.registration.User
+import javax.inject.Inject
 
-class AuthService: AuthSource {
+class AuthService @Inject constructor(private val mAuth: FirebaseAuth): AuthSource {
     override fun userRegistration(user: User): Task<AuthResult> {
-        val mAuth = FirebaseAuth.getInstance()
         return mAuth.createUserWithEmailAndPassword(user.email,user.password)
     }
 
     override fun userLogin(user: LoginUser): Task<AuthResult> {
-        val mAuth = FirebaseAuth.getInstance()
         return mAuth.signInWithEmailAndPassword(user.email,user.password)
     }
 
     override fun userPassword(email: String) {
-        TODO("Not yet implemented")
+
     }
 }

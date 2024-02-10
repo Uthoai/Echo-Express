@@ -13,7 +13,9 @@ import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.databinding.FragmentLoginBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
     val viewModel: LoginViewModel by viewModels()

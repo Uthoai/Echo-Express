@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.databinding.FragmentCustomerDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CustomerDashboardFragment : BaseFragment<FragmentCustomerDashboardBinding>
     (FragmentCustomerDashboardBinding::inflate) {
     override fun setListener() {
