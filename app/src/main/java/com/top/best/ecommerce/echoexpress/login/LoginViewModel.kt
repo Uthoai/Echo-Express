@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.top.best.ecommerce.echoexpress.core.DataState
-import com.top.best.ecommerce.echoexpress.data.AuthService
-import com.top.best.ecommerce.echoexpress.registration.User
+import com.top.best.ecommerce.echoexpress.data.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val authService: AuthService): ViewModel() {
+class LoginViewModel @Inject constructor(private val authService: AuthRepository): ViewModel() {
 
     private val loginResponse = MutableLiveData<DataState<LoginUser>>()
     val _loginResponse: LiveData<DataState<LoginUser>> = loginResponse
