@@ -12,10 +12,10 @@ import javax.inject.Inject
 class RegistrationViewModel @Inject constructor(private val authService: AuthRepository) :
     ViewModel() {
 
-    private val registrationResponse = MutableLiveData<DataState<User>>()
-    val _registrationResponse: LiveData<DataState<User>> = registrationResponse
+    private val registrationResponse = MutableLiveData<DataState<RegistrationUser>>()
+    val _registrationResponse: LiveData<DataState<RegistrationUser>> = registrationResponse
 
-    fun userRegistration(user: User) {
+    fun userRegistration(user: RegistrationUser) {
         registrationResponse.postValue(DataState.Loading())    //Auth loading
 
         authService.userRegistration(user)

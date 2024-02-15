@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_startFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_startFragment_to_customerDashboardFragment"
+            app:destination="@id/customerDashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -45,5 +48,9 @@
         android:id="@+id/customerDashboardFragment"
         android:name="com.top.best.ecommerce.echoexpress.customer_dashboard.CustomerDashboardFragment"
         android:label="fragment_customer_dashboard"
-        tools:layout="@layout/fragment_customer_dashboard" />
+        tools:layout="@layout/fragment_customer_dashboard" >
+        <action
+            android:id="@+id/action_customerDashboardFragment_to_startFragment"
+            app:destination="@id/startFragment" />
+    </fragment>
 </navigation>

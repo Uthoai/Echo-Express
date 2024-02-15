@@ -1,6 +1,6 @@
 package com.top.best.ecommerce.echoexpress.registration
 
-data class User(
+data class RegistrationUser(
     val name: String,
     val email: String,
     val password: String,

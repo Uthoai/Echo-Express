@@ -6,11 +6,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.top.best.ecommerce.echoexpress.core.Nodes
 import com.top.best.ecommerce.echoexpress.login.LoginUser
-import com.top.best.ecommerce.echoexpress.registration.User
+import com.top.best.ecommerce.echoexpress.registration.RegistrationUser
 import javax.inject.Inject
 
 class AuthRepository @Inject constructor(private val mAuth: FirebaseAuth,private val db: FirebaseFirestore): AuthSource {
-    override fun userRegistration(user: User): Task<AuthResult> {
+    override fun userRegistration(user: RegistrationUser): Task<AuthResult> {
         return mAuth.createUserWithEmailAndPassword(user.email,user.password)
     }
 
@@ -22,7 +22,7 @@ class AuthRepository @Inject constructor(private val mAuth: FirebaseAuth,private
 
     }
 
-    override fun createUser(user: User): Task<Void> {
+    override fun createUser(user: RegistrationUser): Task<Void> {
         return db.collection(Nodes.USER).document(user.userID).set(user)
     }
 }

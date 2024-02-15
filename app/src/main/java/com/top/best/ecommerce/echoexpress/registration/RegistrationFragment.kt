@@ -1,13 +1,7 @@
 package com.top.best.ecommerce.echoexpress.registration
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
@@ -76,7 +70,7 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
         val password = binding.etPassword.text.toString()
         if (emailPattern.matches(email)){
             if (password.length>=8){
-                val user = User(
+                val user = RegistrationUser(
                     name,
                     email,
                     password,
