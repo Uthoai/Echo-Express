@@ -1,11 +1,13 @@
 package com.top.best.ecommerce.echoexpress.registration
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
+import com.top.best.ecommerce.echoexpress.dashboard.seller.SellerDashboardActivity
 import com.top.best.ecommerce.echoexpress.databinding.FragmentRegistrationBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
 import dagger.hilt.android.AndroidEntryPoint
@@ -13,7 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentRegistrationBinding::inflate) {
 
-    val viewModel: RegistrationViewModel by viewModels()
+    private val viewModel: RegistrationViewModel by viewModels()
 
     override fun allObserver() {
         registrationObserver()
@@ -32,8 +34,8 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
                 }
                 is DataState.Success -> {
                     loading.dismiss()
-                    //Toast.makeText(context, "create user: ${it.data}", Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_registrationFragment_to_customerDashboardFragment)
+                    startActivity(Intent(requireContext(), SellerDashboardActivity::class.java))
+                    requireActivity().finish()
                 }
             }
         }

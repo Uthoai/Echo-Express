@@ -9,4 +9,14 @@
     <string name="new_user">New User</string>
     <string name="full_name">full name</string>
     <string name="logout">Logout</string>
+    <string name="product_upload_fragment">Product Upload Fragment</string>
+    <string name="seller_profile_fragment">Seller Profile Fragment</string>
+    <string name="seller_home_fragment">Seller Home Fragment</string>
+    <string name="setting">Setting</string>
+    <string name="home">Home</string>
+    <string name="upload">Upload</string>
+    <string name="profile">Profile</string>
+    <string name="report">Report</string>
+    <string name="menu">menu</string>
+    <string name="welcome_to">WELCOME TO</string>
 </resources>

@@ -16,18 +16,12 @@
         <action
             android:id="@+id/action_startFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
-        <action
-            android:id="@+id/action_startFragment_to_customerDashboardFragment"
-            app:destination="@id/customerDashboardFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.top.best.ecommerce.echoexpress.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_customerDashboardFragment"
-            app:destination="@id/customerDashboardFragment" />
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
@@ -38,19 +32,7 @@
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action
-            android:id="@+id/action_registrationFragment_to_customerDashboardFragment"
-            app:destination="@id/customerDashboardFragment" />
-        <action
             android:id="@+id/action_registrationFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/customerDashboardFragment"
-        android:name="com.top.best.ecommerce.echoexpress.customer_dashboard.CustomerDashboardFragment"
-        android:label="fragment_customer_dashboard"
-        tools:layout="@layout/fragment_customer_dashboard" >
-        <action
-            android:id="@+id/action_customerDashboardFragment_to_startFragment"
-            app:destination="@id/startFragment" />
     </fragment>
 </navigation>

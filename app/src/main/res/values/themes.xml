@@ -8,4 +8,11 @@
     </style>
 
     <style name="Theme.EchoExpress" parent="Base.Theme.EchoExpress" />
+
+    <style name="Theme.EchoExpress.AppBar" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryVariant">@color/orange</item>
+        <item name="colorOnPrimary">@color/orange</item>
+    </style>
+
 </resources>

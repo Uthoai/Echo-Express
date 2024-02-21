@@ -1,5 +1,6 @@
 package com.top.best.ecommerce.echoexpress.view
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
+import com.top.best.ecommerce.echoexpress.dashboard.seller.SellerDashboardActivity
 import com.top.best.ecommerce.echoexpress.databinding.FragmentStartBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,7 +34,8 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
 
     private fun setAutoLogin() {
         FirebaseAuth.getInstance().currentUser?.let {
-            findNavController().navigate(R.id.action_startFragment_to_customerDashboardFragment)
+            startActivity(Intent(requireContext(),SellerDashboardActivity::class.java))
+            requireActivity().finish()
         }
     }
 

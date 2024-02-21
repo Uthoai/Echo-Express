@@ -1,5 +1,6 @@
 package com.top.best.ecommerce.echoexpress.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
+import com.top.best.ecommerce.echoexpress.dashboard.seller.SellerDashboardActivity
 import com.top.best.ecommerce.echoexpress.databinding.FragmentLoginBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    val viewModel: LoginViewModel by viewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun allObserver() {
         loginObserver()
@@ -33,11 +35,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
                 is DataState.Loading -> {
                     loading.show()
-                    //Toast.makeText(context, "loading...", Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Success -> {
                     loading.dismiss()
-                    findNavController().navigate(R.id.action_loginFragment_to_customerDashboardFragment)
+                    startActivity(Intent(requireContext(), SellerDashboardActivity::class.java))
+                    requireActivity().finish()
                 }
             }
         }
