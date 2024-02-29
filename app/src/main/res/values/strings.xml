@@ -19,4 +19,8 @@
     <string name="report">Report</string>
     <string name="menu">menu</string>
     <string name="welcome_to">WELCOME TO</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Product Price</string>
+    <string name="product_amount">Product Amount</string>
+    <string name="submit">Submit</string>
 </resources>

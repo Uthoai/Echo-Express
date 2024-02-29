@@ -68,6 +68,12 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    //image picker
+    implementation ("com.github.dhaval2404:imagepicker:2.1")
+
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
 }
 
 /*kapt {

@@ -14,16 +14,16 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/sellerBottomNavigation"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/seller_nav"/>
-    
+        app:navGraph="@navigation/seller_nav" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/sellerBottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/seller_botton_nav_menu"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:itemIconTint="@color/orange"
         app:itemTextColor="@color/orange"
-        app:layout_constraintTop_toBottomOf="@id/sellerFragmentContainerView"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sellerFragmentContainerView"
+        app:menu="@menu/seller_botton_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

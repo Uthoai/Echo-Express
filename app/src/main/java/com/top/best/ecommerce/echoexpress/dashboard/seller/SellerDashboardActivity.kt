@@ -3,6 +3,7 @@ package com.top.best.ecommerce.echoexpress.dashboard.seller
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -30,7 +31,8 @@ class SellerDashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySellerDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
+        //navController with appBarConfig fragment
         navController = findNavController(R.id.sellerFragmentContainerView)
         val appBarConfig = AppBarConfiguration(setOf(
             R.id.sellerHomeFragment,
@@ -46,11 +48,13 @@ class SellerDashboardActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
+    //Seller Top Nav
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.seller_top_nav_menu, menu)
         return true
     }
 
+    //Seller Top Nav Item Select
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.menuLogout ->{
