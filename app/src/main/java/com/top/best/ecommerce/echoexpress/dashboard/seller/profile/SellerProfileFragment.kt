@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.dashboard.seller
+package com.top.best.ecommerce.echoexpress.dashboard.seller.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/sellerHomeFragment"
-        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.SellerHomeFragment"
+        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.dashboard.SellerHomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_seller_home" />
     <fragment
         android:id="@+id/uploadProductFragment"
-        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.UploadProductFragment"
+        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.upload.UploadProductFragment"
         android:label="Upload Product"
         tools:layout="@layout/fragment_upload_product" />
     <fragment
         android:id="@+id/sellerProfileFragment"
-        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.SellerProfileFragment"
+        android:name="com.top.best.ecommerce.echoexpress.dashboard.seller.profile.SellerProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_seller_profile" />
 </navigation>

@@ -1,41 +1,42 @@
-package com.top.best.ecommerce.echoexpress.dashboard.seller
+package com.top.best.ecommerce.echoexpress.dashboard.seller.upload
 
 import android.Manifest
 import android.app.Activity
-import android.os.Build
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
+import androidx.fragment.app.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.top.best.ecommerce.echoexpress.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
+import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.core.areAllPermissionGranted
 import com.top.best.ecommerce.echoexpress.core.extract
 import com.top.best.ecommerce.echoexpress.core.requestPermission
 import com.top.best.ecommerce.echoexpress.data.Product
 import com.top.best.ecommerce.echoexpress.databinding.FragmentUploadProductBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
 @AndroidEntryPoint
 class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(FragmentUploadProductBinding::inflate) {
 
-    private lateinit var product: Product
+    private val viewModel: ProductUploadViewModel by viewModels()
+
+    private val product: Product by lazy{
+        Product()
+    }
 
     private lateinit var permissionRequest: ActivityResultLauncher<Array<String>>
     companion object{
         private val permissionList = arrayOf(
-
             Manifest.permission.CAMERA,
             Manifest.permission.READ_MEDIA_IMAGES
         )
     }
+
     override fun setListener() {
         permissionRequest = getPermissionRequest()
 
@@ -45,7 +46,6 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(Fragmen
                 requestPermission(permissionRequest, permissionList)
             }
 
-
             btnUploadProduct.setOnClickListener {
                 loading.show()
                 val name = etProductName.extract()
@@ -53,13 +53,17 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(Fragmen
                 val price = etProductPrice.extract()
                 val amount = etProductAmount.extract()
 
-                product = Product(
-                    name = name,
-                    description = description,
-                    price = price.toDouble(),
-                    amount = amount.toInt()
-                )
-                uploadProduct(product)
+                FirebaseAuth.getInstance().currentUser?.let {
+                    product.apply {
+                        this.productID = UUID.randomUUID().toString()
+                        this.name = name
+                        this.description = description
+                        this.price = price.toDouble()
+                        this.amount = amount.toInt()
+                        this.sellerID = it.uid
+                    }
+                    uploadProduct(product)
+                }
             }
         }
     }
@@ -82,9 +86,26 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(Fragmen
     }
 
     private fun uploadProduct(product: Product) {
-
+        viewModel.productUpload(product)
     }
     override fun allObserver() {
+
+        viewModel._productUploadResponse.observe(viewLifecycleOwner){
+            when(it){
+                is DataState.Error -> {
+                    loading.dismiss()
+                    Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Loading -> {
+                    loading.show()
+                }
+                is DataState.Success -> {
+                    Toast.makeText(requireContext(), "${it.message}", Toast.LENGTH_SHORT).show()
+                    loading.dismiss()
+                }
+            }
+        }
+
     }
 
     private val startForProfileImageResult =
@@ -99,7 +120,7 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(Fragmen
                     //Image Uri will not be null for RESULT_OK
                     val fileUri = data?.data!!
                     binding.ivProduct.setImageURI(fileUri)
-
+                    product.imageLink = fileUri.toString()
                 }
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
@@ -109,5 +130,4 @@ class UploadProductFragment : BaseFragment<FragmentUploadProductBinding>(Fragmen
                 }
             }
         }
-
 }
