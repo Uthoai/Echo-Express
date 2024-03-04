@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.login
+package com.top.best.ecommerce.echoexpress.view.login
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

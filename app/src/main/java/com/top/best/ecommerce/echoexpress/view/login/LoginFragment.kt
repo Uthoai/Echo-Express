@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.registration
+package com.top.best.ecommerce.echoexpress.view.login
 
 import android.content.Intent
 import android.widget.Toast
@@ -7,22 +7,22 @@ import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
-import com.top.best.ecommerce.echoexpress.dashboard.seller.SellerDashboardActivity
-import com.top.best.ecommerce.echoexpress.databinding.FragmentRegistrationBinding
+import com.top.best.ecommerce.echoexpress.view.dashboard.seller.SellerDashboardActivity
+import com.top.best.ecommerce.echoexpress.databinding.FragmentLoginBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentRegistrationBinding::inflate) {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    private val viewModel: RegistrationViewModel by viewModels()
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun allObserver() {
-        registrationObserver()
+        loginObserver()
     }
 
-    private fun registrationObserver() {
-        viewModel._registrationResponse.observe(viewLifecycleOwner){
+    private fun loginObserver(){
+        viewModel._loginResponse.observe(viewLifecycleOwner){
             when(it){
                 is DataState.Error -> {
                     loading.dismiss()
@@ -30,7 +30,6 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
                 }
                 is DataState.Loading -> {
                     loading.show()
-                    Toast.makeText(context, "loading...", Toast.LENGTH_SHORT).show()
                 }
                 is DataState.Success -> {
                     loading.dismiss()
@@ -43,46 +42,35 @@ class RegistrationFragment : BaseFragment<FragmentRegistrationBinding>(FragmentR
 
     override fun setListener() {
         with(binding){
-            btnRegister.setOnClickListener {
-                etFullName.isEmpty()
+            btnLogin.setOnClickListener {
                 etEmail.isEmpty()
                 etPassword.isEmpty()
-
-                if (!etFullName.isEmpty() && !etEmail.isEmpty() && !etPassword.isEmpty()) {
-                    if (etFullName.text.toString().length>=3){
-                        checkEmailPasswordValidity()
-                    }
-                    else{
-                        Toast.makeText(context, "please enter proper name", Toast.LENGTH_SHORT).show()
-                    }
+                if (!etEmail.isEmpty() && !etPassword.isEmpty()){
+                    checkEmailPasswordValidity()
                 }else{
-                    Toast.makeText(context, "please fill up all input", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "please fill up email/password", Toast.LENGTH_SHORT).show()
                 }
             }
-            btnLogin.setOnClickListener {
-                findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+            btnRegister.setOnClickListener {
+                findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
             }
         }
     }
 
     private fun checkEmailPasswordValidity() {
         val emailPattern = Regex("^[a-z0-9]+@[a-z]+\\.[a-z]{2,4}$")
-        val name = binding.etFullName.text.toString()
         val email = binding.etEmail.text.toString()
         val password = binding.etPassword.text.toString()
         if (emailPattern.matches(email)){
             if (password.length>=8){
-                val user = RegistrationUser(
-                    name,
+                val user = LoginUser(
                     email,
-                    password,
-                    "Seller",
-                    ""
+                    password
                 )
-                viewModel.userRegistration(user)
+                viewModel.userLogin(user)
             }
             else{
-                Toast.makeText(context, "password must be minimum 8 character.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "enter correct password", Toast.LENGTH_SHORT).show()
             }
         }
         else{

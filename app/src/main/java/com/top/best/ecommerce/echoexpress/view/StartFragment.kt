@@ -5,7 +5,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
-import com.top.best.ecommerce.echoexpress.dashboard.seller.SellerDashboardActivity
+import com.top.best.ecommerce.echoexpress.view.dashboard.seller.SellerDashboardActivity
 import com.top.best.ecommerce.echoexpress.databinding.FragmentStartBinding
 import dagger.hilt.android.AndroidEntryPoint
 

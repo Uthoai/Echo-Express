@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.dashboard.seller.upload
+package com.top.best.ecommerce.echoexpress.view.dashboard.seller.upload
 
 import android.Manifest
 import android.app.Activity

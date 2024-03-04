@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.dashboard.seller
+package com.top.best.ecommerce.echoexpress.view.dashboard.seller
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

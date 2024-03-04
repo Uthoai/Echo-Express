@@ -23,4 +23,6 @@
     <string name="product_price">Product Price</string>
     <string name="product_amount">Product Amount</string>
     <string name="submit">Submit</string>
+    <string name="product_description_product_description_product_description">Product Description Product Description Product Description</string>
+    <string name="price_25000">Price: 25000</string>
 </resources>

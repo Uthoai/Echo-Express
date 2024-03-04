@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="@dimen/_4sdp"
+    app:cardCornerRadius="@dimen/_8sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_product"
+            android:layout_width="156dp"
+            android:layout_height="156dp"
+            android:src="@drawable/iv_placeholder_product"
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/txt_productName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/adamina"
+            android:maxLines="1"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:paddingVertical="@dimen/_4sdp"
+            android:text="@string/product_name"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/iv_product" />
+
+        <TextView
+            android:id="@+id/txt_productDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/product_description_product_description_product_description"
+            android:fontFamily="@font/aldrich"
+            android:textColor="@color/orange"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            app:layout_constraintTop_toBottomOf="@id/txt_productName"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/txt_productStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available: 210"
+            android:textColor="@color/orange"
+            android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+            app:layout_constraintTop_toBottomOf="@id/txt_productDescription"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_16sdp"/>
+
+        <TextView
+            android:id="@+id/txt_productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price_25000"
+            android:textColor="@color/orange"
+            android:textStyle="bold"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintTop_toBottomOf="@id/txt_productStock"
+            app:layout_constraintStart_toStartOf="parent"
+            android:paddingHorizontal="@dimen/_4sdp"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

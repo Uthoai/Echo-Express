@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.top.best.ecommerce.echoexpress.login.LoginFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.top.best.ecommerce.echoexpress.registration.RegistrationFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.registration.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" >
         <action

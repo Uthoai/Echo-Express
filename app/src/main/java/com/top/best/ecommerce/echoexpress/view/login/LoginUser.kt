@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.login
+package com.top.best.ecommerce.echoexpress.view.login
 
 data class LoginUser(
     val email: String,

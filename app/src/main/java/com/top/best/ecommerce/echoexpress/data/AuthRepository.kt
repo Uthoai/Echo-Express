@@ -5,8 +5,8 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.top.best.ecommerce.echoexpress.core.Nodes
-import com.top.best.ecommerce.echoexpress.login.LoginUser
-import com.top.best.ecommerce.echoexpress.registration.RegistrationUser
+import com.top.best.ecommerce.echoexpress.view.login.LoginUser
+import com.top.best.ecommerce.echoexpress.view.registration.RegistrationUser
 import javax.inject.Inject
 
 class AuthRepository @Inject constructor(private val mAuth: FirebaseAuth,private val db: FirebaseFirestore): AuthSource {

@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.dashboard.seller.upload
+package com.top.best.ecommerce.echoexpress.view.dashboard.seller.upload
 
 import android.net.Uri
 import androidx.core.net.toUri

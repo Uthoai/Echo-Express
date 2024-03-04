@@ -24,7 +24,7 @@
         android:theme="@style/Theme.EchoExpress"
         tools:targetApi="31">
         <activity
-            android:name=".dashboard.seller.SellerDashboardActivity"
+            android:name=".view.dashboard.seller.SellerDashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.EchoExpress.AppBar"/>
         <activity

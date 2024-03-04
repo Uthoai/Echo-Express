@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.registration
+package com.top.best.ecommerce.echoexpress.view.registration
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
