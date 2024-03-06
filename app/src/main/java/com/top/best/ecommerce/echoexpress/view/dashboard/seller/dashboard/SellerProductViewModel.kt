@@ -3,12 +3,10 @@ package com.top.best.ecommerce.echoexpress.view.dashboard.seller.dashboard
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.toObject
 import com.top.best.ecommerce.echoexpress.core.DataState
+import com.top.best.ecommerce.echoexpress.core.Nodes
 import com.top.best.ecommerce.echoexpress.data.Product
-import com.top.best.ecommerce.echoexpress.data.SellerRepository
+import com.top.best.ecommerce.echoexpress.data.repository.SellerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -21,7 +19,7 @@ class SellerProductViewModel @Inject constructor(private val sellerRepo: SellerR
     fun getAllProductByID(userID: String){
         productResponse.postValue(DataState.Loading())
 
-        sellerRepo.getAllProductByUserID(userID).addOnSuccessListener { document->
+        sellerRepo.getAllDataByUserID(userID, Nodes.PRODUCT,"sellerID").addOnSuccessListener { document->
             val productList = mutableListOf<Product>()
 
             document.documents.forEach { doc->

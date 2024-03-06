@@ -5,13 +5,10 @@ import androidx.core.net.toUri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
 import com.top.best.ecommerce.echoexpress.core.DataState
-import com.top.best.ecommerce.echoexpress.data.AuthRepository
 import com.top.best.ecommerce.echoexpress.data.Product
-import com.top.best.ecommerce.echoexpress.data.SellerRepository
+import com.top.best.ecommerce.echoexpress.data.repository.SellerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -25,7 +22,7 @@ class ProductUploadViewModel @Inject constructor(private val sellerRepo: SellerR
 
         val imageUri: Uri = product.imageLink.toUri()
 
-        sellerRepo.uploadProductImage(imageUri).addOnSuccessListener { taskSnapshot->
+        sellerRepo.uploadImage(imageUri,"products","PRO_").addOnSuccessListener { taskSnapshot->
 
             taskSnapshot.metadata?.reference?.downloadUrl?.addOnSuccessListener { uri->     //check upload product image to fireStorage
                 product.imageLink = uri.toString()
