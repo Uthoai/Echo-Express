@@ -7,8 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.core.Nodes
-import com.top.best.ecommerce.echoexpress.data.Product
-import com.top.best.ecommerce.echoexpress.data.repository.SellerRepository
+import com.top.best.ecommerce.echoexpress.data.seller_repository.SellerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,7 +17,7 @@ class SellerProfileViewModel @Inject constructor(private val sellerProfileRepo: 
     private val profileUpdateResponse = MutableLiveData<DataState<String>>()
     val _profileUpdateResponse: LiveData<DataState<String>> = profileUpdateResponse
 
-    fun updateProfile(sellerProfile: SellerProfile,hasLocalImageUri: Boolean){
+    fun updateProfile(sellerProfile: Profile,hasLocalImageUri: Boolean){
         profileUpdateResponse.postValue(DataState.Loading())
 
         if (hasLocalImageUri){
@@ -52,15 +51,15 @@ class SellerProfileViewModel @Inject constructor(private val sellerProfileRepo: 
 
     }
 
-    private val getUserDataResponse = MutableLiveData<DataState<SellerProfile>>()
-    val _getUserDataResponse: LiveData<DataState<SellerProfile>> get() = getUserDataResponse
+    private val getUserDataResponse = MutableLiveData<DataState<Profile>>()
+    val _getUserDataResponse: LiveData<DataState<Profile>> get() = getUserDataResponse
 
     fun getUserByUserID(userID: String){
         getUserDataResponse.postValue(DataState.Loading())
 
         sellerProfileRepo.getAllDataByUserID(userID,Nodes.USER,"userID").addOnSuccessListener {value->
 
-            getUserDataResponse.postValue(DataState.Success(value.documents.get(0).toObject(SellerProfile::class.java)))
+            getUserDataResponse.postValue(DataState.Success(value.documents.get(0).toObject(Profile::class.java)))
 
         }.addOnFailureListener {
 

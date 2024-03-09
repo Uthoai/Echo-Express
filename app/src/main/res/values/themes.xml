@@ -4,7 +4,8 @@
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryVariant">@color/orange</item>
-        <!--<item name="colorOnPrimary">@color/orange</item>-->
+        <item name="colorOnPrimary">@color/orange</item>
+        <item name="android:statusBarColor">@color/orange</item>
     </style>
 
     <style name="Theme.EchoExpress" parent="Base.Theme.EchoExpress" />
@@ -13,6 +14,7 @@
         <item name="colorPrimary">@color/orange</item>
         <item name="colorPrimaryVariant">@color/orange</item>
         <item name="colorOnPrimary">@color/orange</item>
+        <item name="android:statusBarColor">@color/orange</item>
     </style>
 
 </resources>

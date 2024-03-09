@@ -2,11 +2,6 @@ package com.top.best.ecommerce.echoexpress.view.dashboard.seller.profile
 
 import android.Manifest
 import android.app.Activity
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
@@ -15,23 +10,19 @@ import androidx.fragment.app.viewModels
 import coil.load
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.auth.FirebaseAuth
-import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.core.areAllPermissionGranted
 import com.top.best.ecommerce.echoexpress.core.extract
 import com.top.best.ecommerce.echoexpress.core.requestPermission
-import com.top.best.ecommerce.echoexpress.data.Product
 import com.top.best.ecommerce.echoexpress.databinding.FragmentSellerProfileBinding
-import com.top.best.ecommerce.echoexpress.view.dashboard.seller.upload.UploadProductFragment
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.UUID
 
 @AndroidEntryPoint
 class SellerProfileFragment : BaseFragment<FragmentSellerProfileBinding>(FragmentSellerProfileBinding::inflate) {
 
     private val viewModel: SellerProfileViewModel by viewModels()
-    private var sellerProfile: SellerProfile? = null
+    private var sellerProfile: Profile? = null
 
     private var hasLocalImageUri: Boolean = false
 
@@ -68,7 +59,7 @@ class SellerProfileFragment : BaseFragment<FragmentSellerProfileBinding>(Fragmen
         }
     }
 
-    private fun updateProfile(sellerProfile: SellerProfile?) {
+    private fun updateProfile(sellerProfile: Profile?) {
         sellerProfile?.let { viewModel.updateProfile(it, hasLocalImageUri) }
     }
 
@@ -83,7 +74,7 @@ class SellerProfileFragment : BaseFragment<FragmentSellerProfileBinding>(Fragmen
                     loading.show()
                 }
                 is DataState.Success -> {
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), it.data, Toast.LENGTH_SHORT).show()
                     loading.dismiss()
 
                 }
@@ -108,7 +99,7 @@ class SellerProfileFragment : BaseFragment<FragmentSellerProfileBinding>(Fragmen
         }
     }
 
-    private fun setProfileData(sellerProfile: SellerProfile?) {
+    private fun setProfileData(sellerProfile: Profile?) {
         hasLocalImageUri = sellerProfile?.userImage.isNullOrBlank()
         binding.apply {
             etFullName.setText(sellerProfile?.name)

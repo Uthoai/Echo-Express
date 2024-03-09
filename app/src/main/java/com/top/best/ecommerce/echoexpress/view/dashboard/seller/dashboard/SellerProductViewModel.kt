@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.top.best.ecommerce.echoexpress.core.DataState
 import com.top.best.ecommerce.echoexpress.core.Nodes
 import com.top.best.ecommerce.echoexpress.data.Product
-import com.top.best.ecommerce.echoexpress.data.repository.SellerRepository
+import com.top.best.ecommerce.echoexpress.data.seller_repository.SellerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

@@ -7,9 +7,11 @@ import androidx.navigation.fragment.findNavController
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
+import com.top.best.ecommerce.echoexpress.core.Nodes
 import com.top.best.ecommerce.echoexpress.view.dashboard.seller.SellerDashboardActivity
 import com.top.best.ecommerce.echoexpress.databinding.FragmentLoginBinding
 import com.top.best.ecommerce.echoexpress.isEmpty
+import com.top.best.ecommerce.echoexpress.view.dashboard.customer.CustomerDashboardActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,8 +35,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                 }
                 is DataState.Success -> {
                     loading.dismiss()
-                    startActivity(Intent(requireContext(), SellerDashboardActivity::class.java))
-                    requireActivity().finish()
+
+                    it.data?.apply {
+                        if (userType == Nodes.USER_TYPE_CUSTOMER){
+                            startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
+                            requireActivity().finish()
+                        } else if (userType == Nodes.USER_TYPE_SELLER){
+                            startActivity(Intent(requireContext(), SellerDashboardActivity::class.java))
+                            requireActivity().finish()
+                        }
+                    }
+
                 }
             }
         }

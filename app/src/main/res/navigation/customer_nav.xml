@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/customerHomeFragment">
+
+
+    <fragment
+        android:id="@+id/customerHomeFragment"
+        android:name="com.top.best.ecommerce.echoexpress.CustomerHomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_customer_home" />
+    <fragment
+        android:id="@+id/customerProfileFragment"
+        android:name="com.top.best.ecommerce.echoexpress.CustomerProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_customer_profile" />
+    <fragment
+        android:id="@+id/customerCartFragment"
+        android:name="com.top.best.ecommerce.echoexpress.CustomerCartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_customer_cart" />
+    <fragment
+        android:id="@+id/customerWishlistFragment"
+        android:name="com.top.best.ecommerce.echoexpress.CustomerWishlistFragment"
+        android:label="Wishlist"
+        tools:layout="@layout/fragment_customer_wishlist" />
+    <fragment
+        android:id="@+id/customerMessageFragment"
+        android:name="com.top.best.ecommerce.echoexpress.CustomerMessageFragment"
+        android:label="Message"
+        tools:layout="@layout/fragment_customer_message" />
+</navigation>

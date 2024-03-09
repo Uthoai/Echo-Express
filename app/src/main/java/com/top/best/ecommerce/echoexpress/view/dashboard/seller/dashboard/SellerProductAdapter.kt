@@ -27,7 +27,7 @@ class SellerProductAdapter(private var productList: List<Product>):
                 txtProductName.text = it.name
                 txtProductDescription.text = it.description
                 txtProductPrice.text = "Price: ${it.price}"
-                txtProductStock.text = "Available: ${it.amount}"
+                txtProductStock.text = "Stock: ${it.amount}"
                 ivProduct.load(it.imageLink)
             }
         }

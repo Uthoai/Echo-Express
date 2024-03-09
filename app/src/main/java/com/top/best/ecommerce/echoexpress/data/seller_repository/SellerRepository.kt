@@ -1,4 +1,4 @@
-package com.top.best.ecommerce.echoexpress.data.repository
+package com.top.best.ecommerce.echoexpress.data.seller_repository
 
 import android.net.Uri
 import com.google.android.gms.tasks.Task
@@ -8,7 +8,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.top.best.ecommerce.echoexpress.core.Nodes
 import com.top.best.ecommerce.echoexpress.data.Product
-import com.top.best.ecommerce.echoexpress.view.dashboard.seller.profile.SellerProfile
+import com.top.best.ecommerce.echoexpress.view.dashboard.seller.profile.Profile
 import com.top.best.ecommerce.echoexpress.view.dashboard.seller.profile.toMap
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class SellerRepository @Inject constructor(
         return db.collection(collectionPath).whereEqualTo(field, userID).get()
     }
 
-    override fun updateProfile(sellerProfile: SellerProfile): Task<Void> {
+    override fun updateProfile(sellerProfile: Profile): Task<Void> {
         return db.collection(Nodes.USER).document(sellerProfile.userID).update(sellerProfile.toMap())
     }
 

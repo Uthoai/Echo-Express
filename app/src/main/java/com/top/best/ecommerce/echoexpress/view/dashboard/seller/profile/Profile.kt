@@ -1,8 +1,7 @@
 package com.top.best.ecommerce.echoexpress.view.dashboard.seller.profile
 
-import java.util.Objects
 
-data class SellerProfile(
+data class Profile(
     var name: String = "",
     var email: String = "",
     val password: String = "",
@@ -12,7 +11,7 @@ data class SellerProfile(
     var shopName: String = ""
 )
 
-fun SellerProfile.toMap(): Map<String, Any?>{
+fun Profile.toMap(): Map<String, Any?>{
     return mapOf(
         "name" to name,
         "email" to email,
