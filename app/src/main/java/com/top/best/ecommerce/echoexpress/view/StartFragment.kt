@@ -1,10 +1,12 @@
 package com.top.best.ecommerce.echoexpress.view
 
 import android.content.Intent
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.top.best.ecommerce.echoexpress.R
 import com.top.best.ecommerce.echoexpress.base.BaseFragment
 import com.top.best.ecommerce.echoexpress.core.DataState
@@ -34,10 +36,20 @@ class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::i
 
     private fun setAutoLogin() {
 
-        FirebaseAuth.getInstance().currentUser?.let {
-
-            viewModel.checkUserById(it.uid)
-
+        val user: FirebaseUser? = FirebaseAuth.getInstance().currentUser
+        if (user != null){
+            binding.apply {
+                layoutLoading.visibility = View.VISIBLE
+                layoutMain.visibility = View.GONE
+            }
+            user.uid.let {
+                viewModel.checkUserById(it)
+            }
+        } else{
+            binding.apply {
+                layoutLoading.visibility = View.GONE
+                layoutMain.visibility = View.VISIBLE
+            }
         }
     }
 

@@ -78,6 +78,9 @@ dependencies {
     implementation ("androidx.activity:activity-ktx:1.8.2")
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
 
+    //animation
+    implementation("com.airbnb.android:lottie:6.3.0")
+
     //coil
     implementation("io.coil-kt:coil:2.6.0")
 
