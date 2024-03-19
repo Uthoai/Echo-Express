@@ -8,27 +8,27 @@
 
     <fragment
         android:id="@+id/customerHomeFragment"
-        android:name="com.top.best.ecommerce.echoexpress.CustomerHomeFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.dashboard.customer.dashboard.CustomerHomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_customer_home" />
     <fragment
         android:id="@+id/customerProfileFragment"
-        android:name="com.top.best.ecommerce.echoexpress.CustomerProfileFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.dashboard.customer.CustomerProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_customer_profile" />
     <fragment
         android:id="@+id/customerCartFragment"
-        android:name="com.top.best.ecommerce.echoexpress.CustomerCartFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.dashboard.customer.CustomerCartFragment"
         android:label="Cart"
         tools:layout="@layout/fragment_customer_cart" />
     <fragment
         android:id="@+id/customerWishlistFragment"
-        android:name="com.top.best.ecommerce.echoexpress.CustomerWishlistFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.dashboard.customer.CustomerWishlistFragment"
         android:label="Wishlist"
         tools:layout="@layout/fragment_customer_wishlist" />
     <fragment
         android:id="@+id/customerMessageFragment"
-        android:name="com.top.best.ecommerce.echoexpress.CustomerMessageFragment"
+        android:name="com.top.best.ecommerce.echoexpress.view.dashboard.customer.CustomerMessageFragment"
         android:label="Message"
         tools:layout="@layout/fragment_customer_message" />
 </navigation>
